@@ -1,0 +1,18 @@
+itop:
+  build: . 
+  links:
+    - db
+  ports:
+    - 80:80
+
+db:
+  image: mysql
+  environment:
+    - MYSQL_ONETIME_PASSWORD=yes
+    - MYSQL_ROOT_PASSWORD=changeme
+  
+#Pour changer le mot de passe mysql (le mot de passe ci dessus est à usage unique) :
+#docker ps --> récuperer l'id du container mysql
+#docker exec -it my-container-name bash --> se connecter en bash sur le conteneur
+#mysql -u root -p --> accéder à mysql avec le mot de passe unique
+#ALTER USER root IDENTIFIED BY 'my-secret-pw'; --> changer le mot de passe 
